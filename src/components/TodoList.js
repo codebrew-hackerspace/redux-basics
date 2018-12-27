@@ -10,10 +10,10 @@ const StyledList = styled.ul`
   list-style-type: none;
 `;
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, toggleTodo }) => (
   <StyledList>
     {todos.map(todo => (
-      <Todo key={todo.id} {...todo} />
+      <Todo key={todo.id} {...todo} onClick={() => toggleTodo(todo.id)} />
     ))}
   </StyledList>
 );
@@ -24,7 +24,8 @@ TodoList.propTypes = {
       id: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  toggleTodo: PropTypes.func.isRequired
 };
 
 export default TodoList;
